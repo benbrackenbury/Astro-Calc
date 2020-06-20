@@ -1,7 +1,7 @@
 # Astro Calc
 ## Calculate max shutter speed to remove star trails from astrophotography shots
 
-Written in SwiftUI
+<em>Written in SwiftUI</em>
 
 ### Background
 When taking pictures of the night sky, a maximum shutter speed exists, influenced by focal length and sensor crop factor.
