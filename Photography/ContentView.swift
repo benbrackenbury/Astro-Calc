@@ -147,9 +147,9 @@ struct ContentView: View {
                 .padding()
                 
                 VStack(spacing: 30) {
-                    Stepper("Focal Length: \(String(format: "%.0f", focalLength)) mm", value: $focalLength, in: 21...300, onEditingChanged: {_ in self.didChange()})
+                    Stepper("Focal Length: \(String(format: "%.0f", focalLength)) mm", value: $focalLength, in: 1...300, onEditingChanged: {_ in self.didChange()})
                     
-                    Slider(value: $focalLength.onChange({_ in self.didChange()}), in: 21...300, step: 1.0)
+                    Slider(value: $focalLength.onChange({_ in self.didChange()}), in: 1...300, step: 1.0)
                         .accentColor(Color.init(hex: "C9786B"))
                     
                     Section(header: Text("Sensor Crop")) {
