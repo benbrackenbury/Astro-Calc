@@ -3,6 +3,8 @@
 
 <strong><em>Written in SwiftUI. Runs on iOS, iPadOS and macOS (Catalyst)</em></strong>
 
+Feel free to fork and create your own versions 🙂
+
 ### Background
 When taking pictures of the night sky, a maximum shutter speed exists, influenced by focal length and sensor crop factor.
 
