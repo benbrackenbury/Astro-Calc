@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RootNavigationView.swift
 //  AstroCalc
 //
 //  Created by Ben Brackenbury on 14/04/2023.
@@ -8,14 +8,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RootNavigationView: View {
     var body: some View {
-        RootNavigationView()
+        TabView {
+            ForEach(Tab.allCases) { $0.tabItem() }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RootNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RootNavigationView()
     }
 }
