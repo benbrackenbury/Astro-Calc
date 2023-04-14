@@ -3,7 +3,6 @@
 //  Photography
 //
 //  Created by Ben Brackenbury on 17/06/2020.
-//  Copyright © 2020 Ben Brackenbury. All rights reserved.
 //
 
 import SwiftUI
