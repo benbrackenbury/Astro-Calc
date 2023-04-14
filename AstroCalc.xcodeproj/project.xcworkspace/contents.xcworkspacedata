@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Photography.xcodeproj">
+      location = "self:/Users/benbrackenbury/Projects/ios/Astro-Calc/AstroCalc.xcodeproj">
    </FileRef>
 </Workspace>
