@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E02900B2B52816D00235F96 /* AstroCalc_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02900A2B52816D00235F96 /* AstroCalc_App.swift */; };
 		7E18B4BA249A376B00C7B0E9 /* ShutterSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E18B4B9249A376B00C7B0E9 /* ShutterSpeedView.swift */; };
 		7E18B4BC249A376F00C7B0E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E18B4BB249A376F00C7B0E9 /* Assets.xcassets */; };
 		7E18B4BF249A376F00C7B0E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E18B4BE249A376F00C7B0E9 /* Preview Assets.xcassets */; };
 		7E18B4C2249A376F00C7B0E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E18B4C0249A376F00C7B0E9 /* LaunchScreen.storyboard */; };
-		7E458BDB29E9B4A30043C930 /* AstroCalc_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458BDA29E9B4A30043C930 /* AstroCalc_App.swift */; };
 		7E458BDD29E9BA1F0043C930 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458BDC29E9BA1F0043C930 /* ContentView.swift */; };
 		7E458BE029E9BA3E0043C930 /* RootNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458BDF29E9BA3E0043C930 /* RootNavigationView.swift */; };
 		7E458BE229E9BA6C0043C930 /* TabEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458BE129E9BA6C0043C930 /* TabEnum.swift */; };
@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E02900A2B52816D00235F96 /* AstroCalc_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroCalc_App.swift; sourceTree = "<group>"; };
 		7E18B4B2249A376B00C7B0E9 /* Astro Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Calc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E18B4B9249A376B00C7B0E9 /* ShutterSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeedView.swift; sourceTree = "<group>"; };
 		7E18B4BB249A376F00C7B0E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		7E18B4C1249A376F00C7B0E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E18B4C3249A376F00C7B0E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E44648E249A4A0100ACB0D0 /* Astro Calc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Astro Calc.entitlements"; sourceTree = "<group>"; };
-		7E458BDA29E9B4A30043C930 /* AstroCalc_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroCalc_App.swift; sourceTree = "<group>"; };
 		7E458BDC29E9BA1F0043C930 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E458BDF29E9BA3E0043C930 /* RootNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationView.swift; sourceTree = "<group>"; };
 		7E458BE129E9BA6C0043C930 /* TabEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabEnum.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				7E44648E249A4A0100ACB0D0 /* Astro Calc.entitlements */,
-				7E458BDA29E9B4A30043C930 /* AstroCalc_App.swift */,
+				7E02900A2B52816D00235F96 /* AstroCalc_App.swift */,
 				7E458BDC29E9BA1F0043C930 /* ContentView.swift */,
 				7E458BDE29E9BA280043C930 /* Navigation */,
 				7E458BE429E9BBF20043C930 /* Settings */,
@@ -196,7 +196,7 @@
 			files = (
 				7E458BEA29E9BBF20043C930 /* AppThemePicker.swift in Sources */,
 				7E458BE229E9BA6C0043C930 /* TabEnum.swift in Sources */,
-				7E458BDB29E9B4A30043C930 /* AstroCalc_App.swift in Sources */,
+				7E02900B2B52816D00235F96 /* AstroCalc_App.swift in Sources */,
 				7E18B4BA249A376B00C7B0E9 /* ShutterSpeedView.swift in Sources */,
 				7E458BEE29E9C7C70043C930 /* HelpView.swift in Sources */,
 				7E458BE829E9BBF20043C930 /* SettingsView.swift in Sources */,
