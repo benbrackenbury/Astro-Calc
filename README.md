@@ -1,3 +1,5 @@
 # Astro Calc
 
-## V2 of Astrocalc is a rewrite using much more modern approaches and using featurers of newer iOS versions
+A small shutter-speed calculator for night-sky photography, using the 500 rule.
+
+Version 3 targets the iOS 27 SDK and requires iOS 27.

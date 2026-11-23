@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B087067375C478AB8D113B7 /* ShutterSpeedCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3BAC90DEAD49FC9C56F321 /* ShutterSpeedCalculatorTests.swift */; };
+		5A762FD930B14BEC92CD7445 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 818ADD5599AD453A8D76295E /* PrivacyInfo.xcprivacy */; };
 		7E02900B2B52816D00235F96 /* AstroCalc_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02900A2B52816D00235F96 /* AstroCalc_App.swift */; };
 		7E18B4BA249A376B00C7B0E9 /* ShutterSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E18B4B9249A376B00C7B0E9 /* ShutterSpeedView.swift */; };
 		7E18B4BC249A376F00C7B0E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E18B4BB249A376F00C7B0E9 /* Assets.xcassets */; };
@@ -22,8 +24,21 @@
 		7E458BF129E9C9500043C930 /* ShutterSpeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458BF029E9C9500043C930 /* ShutterSpeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DADE41A97573464AB7D1C61A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E18B4AA249A376B00C7B0E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E18B4B1249A376B00C7B0E9;
+			remoteInfo = AstroCalc;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2D3BAC90DEAD49FC9C56F321 /* ShutterSpeedCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeedCalculatorTests.swift; sourceTree = "<group>"; };
 		7E02900A2B52816D00235F96 /* AstroCalc_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroCalc_App.swift; sourceTree = "<group>"; };
+		818ADD5599AD453A8D76295E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DBA40A96D99442B7B2183098 /* AstroCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstroCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E18B4B2249A376B00C7B0E9 /* Astro Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Calc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E18B4B9249A376B00C7B0E9 /* ShutterSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeedView.swift; sourceTree = "<group>"; };
 		7E18B4BB249A376F00C7B0E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +64,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DF146C7763748DFB8E1F975 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -56,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				7E18B4B4249A376B00C7B0E9 /* AstroCalc */,
+				5B17FC015C964BBD9E6C7D28 /* AstroCalcTests */,
 				7E18B4B3249A376B00C7B0E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				7E18B4B2249A376B00C7B0E9 /* Astro Calc.app */,
+				DBA40A96D99442B7B2183098 /* AstroCalcTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +105,7 @@
 				7E18B4BB249A376F00C7B0E9 /* Assets.xcassets */,
 				7E18B4C0249A376F00C7B0E9 /* LaunchScreen.storyboard */,
 				7E18B4C3249A376F00C7B0E9 /* Info.plist */,
+				818ADD5599AD453A8D76295E /* PrivacyInfo.xcprivacy */,
 				7E18B4BD249A376F00C7B0E9 /* Preview Content */,
 			);
 			path = AstroCalc;
@@ -122,6 +147,14 @@
 			path = ShutterSpeed;
 			sourceTree = "<group>";
 		};
+		5B17FC015C964BBD9E6C7D28 /* AstroCalcTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D3BAC90DEAD49FC9C56F321 /* ShutterSpeedCalculatorTests.swift */,
+			);
+			path = AstroCalcTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +175,23 @@
 			productReference = 7E18B4B2249A376B00C7B0E9 /* Astro Calc.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0FB87B7798D54346BC22E6A2 /* AstroCalcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7757E717B6514FB88E407C90 /* Build configuration list for PBXNativeTarget "AstroCalcTests" */;
+			buildPhases = (
+				3397BD785D564CB390FBBF5C /* Sources */,
+				5DF146C7763748DFB8E1F975 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8846126FD3C6402A86E6FF86 /* PBXTargetDependency */,
+			);
+			name = AstroCalcTests;
+			productName = AstroCalcTests;
+			productReference = DBA40A96D99442B7B2183098 /* AstroCalcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -149,8 +199,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 2720;
+				LastUpgradeCheck = 2720;
 				ORGANIZATIONNAME = "Ben Brackenbury";
 				TargetAttributes = {
 					7E18B4B1249A376B00C7B0E9 = {
@@ -159,7 +209,7 @@
 				};
 			};
 			buildConfigurationList = 7E18B4AD249A376B00C7B0E9 /* Build configuration list for PBXProject "AstroCalc" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 16.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -172,6 +222,7 @@
 			projectRoot = "";
 			targets = (
 				7E18B4B1249A376B00C7B0E9 /* AstroCalc */,
+				0FB87B7798D54346BC22E6A2 /* AstroCalcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -184,6 +235,7 @@
 				7E18B4C2249A376F00C7B0E9 /* LaunchScreen.storyboard in Resources */,
 				7E18B4BF249A376F00C7B0E9 /* Preview Assets.xcassets in Resources */,
 				7E18B4BC249A376F00C7B0E9 /* Assets.xcassets in Resources */,
+				5A762FD930B14BEC92CD7445 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +259,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3397BD785D564CB390FBBF5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B087067375C478AB8D113B7 /* ShutterSpeedCalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8846126FD3C6402A86E6FF86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E18B4B1249A376B00C7B0E9 /* AstroCalc */;
+			targetProxy = DADE41A97573464AB7D1C61A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7E18B4C0249A376F00C7B0E9 /* LaunchScreen.storyboard */ = {
@@ -227,7 +295,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -255,10 +323,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -272,12 +342,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -288,7 +361,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -316,10 +389,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -327,11 +402,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -341,25 +419,37 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "AstroCalc/Astro Calc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"AstroCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = FJ799JZWN8;
+				ENABLE_DEBUG_DYLIB = YES;
 				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AstroCalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				INFOPLIST_KEY_CFBundleDisplayName = "Astro Calc";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.benbrackenbury.AstroCalc;
+				PRODUCT_MODULE_NAME = AstroCalc;
 				PRODUCT_NAME = "Astro Calc";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_VERSION = 5.0;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -368,26 +458,79 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "AstroCalc/Astro Calc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"AstroCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = FJ799JZWN8;
 				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AstroCalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				INFOPLIST_KEY_CFBundleDisplayName = "Astro Calc";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.benbrackenbury.AstroCalc;
+				PRODUCT_MODULE_NAME = AstroCalc;
 				PRODUCT_NAME = "Astro Calc";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_VERSION = 5.0;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		905134737D714F4F9A654FEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = FJ799JZWN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 3.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benbrackenbury.AstroCalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astro Calc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Astro Calc";
+			};
+			name = Debug;
+		};
+		B8FA3E62ADCB4891A3FDD3D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = FJ799JZWN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 3.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benbrackenbury.AstroCalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astro Calc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Astro Calc";
 			};
 			name = Release;
 		};
@@ -408,6 +551,15 @@
 			buildConfigurations = (
 				7E18B4C7249A376F00C7B0E9 /* Debug */,
 				7E18B4C8249A376F00C7B0E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7757E717B6514FB88E407C90 /* Build configuration list for PBXNativeTarget "AstroCalcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				905134737D714F4F9A654FEE /* Debug */,
+				B8FA3E62ADCB4891A3FDD3D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

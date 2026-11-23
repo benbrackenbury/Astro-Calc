@@ -6,53 +6,22 @@
 //  Copyright © 2023 Ben Brackenbury. All rights reserved.
 //
 
-import SwiftUI
-import Combine
+import Foundation
 
-class ShutterSpeedViewModel: ObservableObject {
-    @AppStorage("focalLength") var focalLength: Double = 35
-    @AppStorage("isCropped") var isCropped: Int = 0
-    @AppStorage("sensorCrop") var sensorCrop: Double = 1.1
-    
-    @Published var shutterSpeed: Float? = nil
-    @Published var showInfo: Bool = false
-    @Published var showResetAS: Bool = false
-    
-    private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        setupSubscriptions()
-    }
-    
-    deinit {
-        cancellables.forEach{$0.cancel()}
-    }
-    
-    private func setupSubscriptions() {
-        objectWillChange
-            .debounce(for: 0.01, scheduler: RunLoop.main)
-            .sink { [weak self] _ in
-                print("")
-                self?.calculate()
-            }
-            .store(in: &cancellables)
-    }
-    
-    func calculate() {
-        if self.isCropped == 0 {
-            self.sensorCrop = 1
-        }
-        self.shutterSpeed = Float(500 / (CGFloat(self.sensorCrop) * CGFloat(self.focalLength)))
-    }
-    
-    func resetToDefault() {
-        let haptic = UINotificationFeedbackGenerator()
-        haptic.notificationOccurred(.success)
-        
-        self.focalLength = 35
-        self.isCropped = 0
-        self.sensorCrop = 1.1
-        self.shutterSpeed = 0
+enum ShutterSpeedCalculator {
+    static let ruleConstant: Double = 500
+    static let defaultFocalLength: Double = 35
+    static let defaultCropFactor: Double = 1.1
+    static let fullFrameCropFactor: Double = 1
+    static let minimumFocalLength: Double = 1
+    static let maximumFocalLength: Double = 300
+    static let minimumCropFactor: Double = 1.1
+    static let maximumCropFactor: Double = 1.9
+    static let cropFactorStep: Double = 0.1
+
+    static func maximumShutterSpeed(focalLength: Double, cropFactor: Double) -> Double {
+        let length = min(max(focalLength, minimumFocalLength), maximumFocalLength)
+        let crop = min(max(cropFactor, fullFrameCropFactor), maximumCropFactor)
+        return ruleConstant / (crop * length)
     }
 }
-

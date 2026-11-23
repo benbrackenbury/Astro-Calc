@@ -8,46 +8,27 @@
 
 import SwiftUI
 
-enum Tab: Int, View, CaseIterable, Hashable, Identifiable {
-    var id: Self { self }
-    
+enum AppTab: Int, CaseIterable, Hashable, Identifiable {
     case shutterSpeed
     case settings
-    
-    var body: some View {
-        switch self {
-        case .shutterSpeed:
-            ShutterSpeedView()
-        case .settings:
-            SettingsView()
-        }
-    }
-    
+
+    var id: Int { rawValue }
+
     var title: String {
         switch self {
         case .shutterSpeed:
-            return "Shutter Speed"
+            "Shutter Speed"
         case .settings:
-            return "Settings"
+            "Settings"
         }
     }
-    
+
     var iconName: String {
         switch self {
         case .shutterSpeed:
-            return "stopwatch"
+            "stopwatch"
         case .settings:
-            return "gear"
+            "gear"
         }
-    }
-    
-    var label: some View {
-        Label(title, systemImage: iconName)
-    }
-    
-    @ViewBuilder func tabItem() -> some View {
-        self
-            .tabItem{label}
-            .tag(self.id)
     }
 }

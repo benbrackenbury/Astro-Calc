@@ -8,98 +8,167 @@
 import SwiftUI
 
 struct ShutterSpeedView: View {
-    @ObservedObject var vm = ShutterSpeedViewModel()
-    @AppStorage("focalLength") var focalLength: Double = 35
-    @AppStorage("isCropped") var isCropped: Int = 0
-    @AppStorage("sensorCrop") var sensorCrop: Double = 1.1
-    
-    
+    @AppStorage("focalLength") private var focalLength = ShutterSpeedCalculator.defaultFocalLength
+    @AppStorage("isCropped") private var isCropped = 0
+    @AppStorage("sensorCrop") private var sensorCrop = ShutterSpeedCalculator.defaultCropFactor
+
+    @State private var showHelp = false
+    @State private var showResetConfirmation = false
+    @State private var resetCount = 0
+
+    private var usesCropSensor: Bool { isCropped == 1 }
+
+    private var effectiveCropFactor: Double {
+        usesCropSensor ? sensorCrop : ShutterSpeedCalculator.fullFrameCropFactor
+    }
+
+    private var shutterSpeed: Double {
+        ShutterSpeedCalculator.maximumShutterSpeed(
+            focalLength: focalLength,
+            cropFactor: effectiveCropFactor
+        )
+    }
+
     var body: some View {
         NavigationStack {
             Form {
                 focalLengthSection
                 sensorCropSection
                 resultSection
-            }            .navigationBarTitle("Shutter Speed")
+            }
+            .navigationTitle("Shutter Speed")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: toolbar)
+            .toolbar { toolbarContent }
+            .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
         }
-        .sheet(isPresented: $vm.showInfo) {
+        .sheet(isPresented: $showHelp) {
             HelpView {
                 Text("When taking pictures of the night sky, a maximum shutter speed exists, influenced by focal length and sensor crop factor.")
-                
+
                 Text("To calculate this we use the **500 Rule**:")
-                
+
                 VStack(spacing: 5) {
                     Text("Max shutter speed =")
                     Text("500 / (crop * focal length)")
-                    .italic()
+                        .italic()
                 }
             }
             .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+            .presentationContentInteraction(.scrolls)
         }
-        .confirmationDialog("Reset form values?", isPresented: $vm.showResetAS, titleVisibility: .visible) {
-            Button("Reset to default", role: .destructive, action: vm.resetToDefault)
+        .confirmationDialog("Reset form values?", isPresented: $showResetConfirmation, titleVisibility: .visible) {
+            Button("Reset to default", role: .destructive, action: resetToDefault)
         }
-        
+        .sensoryFeedback(.warning, trigger: showResetConfirmation) { _, presented in
+            presented
+        }
+        .sensoryFeedback(.success, trigger: resetCount)
     }
-    
-    var focalLengthSection: some View {
-        VStack(spacing: 30) {
-            Stepper("Focal Length: \(String(format: "%.0f", focalLength)) mm", value: $focalLength, in: 1...300)
-            
-            Slider(value: $focalLength, in: 1...300, step: 1.0)
+
+    private var focalLengthSection: some View {
+        Section("Focal Length") {
+            Stepper(value: $focalLength, in: ShutterSpeedCalculator.minimumFocalLength...ShutterSpeedCalculator.maximumFocalLength, step: 1) {
+                LabeledContent("Focal length") {
+                    Text("\(focalLength, format: .number.precision(.fractionLength(0))) mm")
+                        .monospacedDigit()
+                        .contentTransition(.numericText())
+                }
+            }
+            .accessibilityValue("\(Int(focalLength)) millimeters")
+
+            Slider(
+                value: $focalLength,
+                in: ShutterSpeedCalculator.minimumFocalLength...ShutterSpeedCalculator.maximumFocalLength,
+                step: 1
+            ) {
+                Text("Focal length")
+            } minimumValueLabel: {
+                Text("\(Int(ShutterSpeedCalculator.minimumFocalLength))")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+            } maximumValueLabel: {
+                Text("\(Int(ShutterSpeedCalculator.maximumFocalLength))")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+            }
+            .accessibilityHidden(true)
+            .tint(.accentColor)
         }
     }
-    
-    var sensorCropSection: some View {
-        Section(header: Text("Sensor Crop")) {
-            Picker(selection: $isCropped, label: Text("")) {
+
+    private var sensorCropSection: some View {
+        Section {
+            Picker("Sensor", selection: $isCropped) {
                 Text("Full").tag(0)
                 Text("Cropped").tag(1)
             }
-            .pickerStyle(SegmentedPickerStyle())
-            
-            if isCropped == 1 {
-                Stepper("Crop Factor: \(String(format: "%g", self.sensorCrop))", value: $sensorCrop, in: 1.1...1.9, step: 0.1)
+            .pickerStyle(.segmented)
+            .accessibilityLabel("Sensor type")
+
+            if usesCropSensor {
+                Stepper(value: $sensorCrop, in: ShutterSpeedCalculator.minimumCropFactor...ShutterSpeedCalculator.maximumCropFactor, step: ShutterSpeedCalculator.cropFactorStep) {
+                    LabeledContent("Crop factor") {
+                        Text(sensorCrop, format: .number.precision(.fractionLength(1)))
+                            .monospacedDigit()
+                            .contentTransition(.numericText())
+                    }
+                }
+                .accessibilityValue("\(sensorCrop, format: .number.precision(.fractionLength(1)))")
             }
-        }
-    }
-    
-    var resultSection: some View {
-        Section {
-            VStack(spacing: 10) {
-                Text("Maximum shutter speed:")
-                Text(
-                    (vm.shutterSpeed != nil)
-                        ? String(format: "%.2f seconds", vm.shutterSpeed!)
-                        : "0"
-                )
-                .font(.title.weight(.bold))
-            }
-        }
-    }
-    
-    @ToolbarContentBuilder func toolbar() -> some ToolbarContent {
-        ToolbarItem(placement: .secondaryAction) {
-            Button(action: { vm.showInfo = true }) {
-                Label("Help", systemImage: "info.circle")
-            }
-        }
-        
-        ToolbarItem(placement: .secondaryAction) {
-            Button("Reset Values", role: .destructive) {
-                let haptic = UINotificationFeedbackGenerator()
-                haptic.notificationOccurred(.warning)
-                vm.showResetAS = true
-            }
+        } header: {
+            Text("Sensor Crop")
+        } footer: {
+            Text(usesCropSensor
+                 ? "Crop factor is applied to focal length in the 500 rule."
+                 : "Full-frame sensors use a crop factor of 1.")
         }
     }
 
+    private var resultSection: some View {
+        Section {
+            VStack(spacing: 8) {
+                Text("Maximum shutter speed")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                Text("\(shutterSpeed, format: .number.precision(.fractionLength(2))) seconds")
+                    .font(.largeTitle.weight(.bold).monospacedDigit())
+                    .multilineTextAlignment(.center)
+                    .contentTransition(.numericText())
+                    .animation(.snappy, value: shutterSpeed)
+                    .frame(maxWidth: .infinity)
+                    .accessibilityAddTraits(.updatesFrequently)
+            }
+            .padding(.vertical, 8)
+            .accessibilityElement(children: .combine)
+        }
+    }
+
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .topBarPinnedTrailing) {
+            Button("Help", systemImage: "info.circle") {
+                showHelp = true
+            }
+        }
+
+        ToolbarOverflowMenu {
+            Button("Reset Values", systemImage: "arrow.counterclockwise", role: .destructive) {
+                showResetConfirmation = true
+            }
+            .labelStyle(.titleAndIcon)
+        }
+    }
+
+    private func resetToDefault() {
+        focalLength = ShutterSpeedCalculator.defaultFocalLength
+        isCropped = 0
+        sensorCrop = ShutterSpeedCalculator.defaultCropFactor
+        resetCount += 1
+    }
 }
 
-struct ShutterSpeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShutterSpeedView()
-    }
+#Preview {
+    ShutterSpeedView()
+        .usePreferredTheme()
 }
