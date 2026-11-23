@@ -9,54 +9,53 @@ import SwiftUI
 
 struct AdvancedSettingsView: View {
     @State private var showResetSettingsConfirm = false
-    @State private var showResetSettingsSuccesful = false
-    
+    @State private var showResetSettingsSuccessful = false
+
     var body: some View {
         Form {
-            Button("Reset Settngs", role: .destructive, action: {
-                showResetSettingsConfirm = true
-                let haptic = UINotificationFeedbackGenerator()
-                haptic.notificationOccurred(.warning)
-            })
-            .confirmationDialog("Reset Settings?", isPresented: $showResetSettingsConfirm, titleVisibility: .visible, actions: {
-                Button("Reset", role: .destructive, action: resetUserDefaults)
-            }, message: {
-                Text("This cannot be undone.")
-            })
-            .alert("Settings have been reset to defaults", isPresented: $showResetSettingsSuccesful) {
-                Button("Ok"){}
+            Section {
+                Button("Reset Settings", role: .destructive) {
+                    showResetSettingsConfirm = true
+                }
+            } footer: {
+                Text("Restores theme, default tab, and shutter speed inputs to their original values.")
             }
         }
         .navigationTitle("Advanced")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
+        .confirmationDialog("Reset Settings?", isPresented: $showResetSettingsConfirm, titleVisibility: .visible) {
+            Button("Reset", role: .destructive, action: resetUserDefaults)
+        } message: {
+            Text("This cannot be undone.")
+        }
+        .alert("Settings have been reset to defaults", isPresented: $showResetSettingsSuccessful) {
+            Button("OK", role: .cancel) {}
+        }
+        .sensoryFeedback(.warning, trigger: showResetSettingsConfirm) { _, presented in
+            presented
+        }
+        .sensoryFeedback(.success, trigger: showResetSettingsSuccessful) { _, presented in
+            presented
+        }
     }
-}
 
-
-//MARK: - Extension
-extension AdvancedSettingsView {
     /**
      Resets UserDefaults and shows confirmation dialog.
-     
+
      - Warning: The function will not do anything if ``Bundle.main.bundleIdentifier``
      is ``nil``.
      - Author: Ben Brackenbury
      */
-    func resetUserDefaults() {
-        if let bundleID = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: bundleID)
-            let haptic = UINotificationFeedbackGenerator()
-            haptic.notificationOccurred(.success)
-            showResetSettingsSuccesful = true
-        }
+    private func resetUserDefaults() {
+        guard let bundleID = Bundle.main.bundleIdentifier else { return }
+        UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        showResetSettingsSuccessful = true
     }
 }
 
-
-struct AdvancedSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            AdvancedSettingsView()
-        }
+#Preview {
+    NavigationStack {
+        AdvancedSettingsView()
     }
 }

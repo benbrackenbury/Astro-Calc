@@ -9,15 +9,28 @@
 import SwiftUI
 
 struct RootNavigationView: View {
+    @State private var selectedTab: AppTab
+
+    init() {
+        let stored = AppTab(rawValue: UserDefaults.standard.integer(forKey: "defaultTab")) ?? .shutterSpeed
+        _selectedTab = State(initialValue: stored)
+    }
+
     var body: some View {
-        TabView {
-            ForEach(Tab.allCases) { $0.tabItem() }
+        TabView(selection: $selectedTab) {
+            Tab(AppTab.shutterSpeed.title, systemImage: AppTab.shutterSpeed.iconName, value: AppTab.shutterSpeed) {
+                ShutterSpeedView()
+            }
+
+            Tab(AppTab.settings.title, systemImage: AppTab.settings.iconName, value: AppTab.settings) {
+                SettingsView()
+            }
         }
+        .tabBarMinimizeBehavior(.onScrollDown)
     }
 }
 
-struct RootNavigationView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootNavigationView()
-    }
+#Preview {
+    RootNavigationView()
+        .usePreferredTheme()
 }
